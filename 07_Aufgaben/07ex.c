@@ -17,7 +17,7 @@ Aufgabe 1a:
 `x` zeigt auf einen 32-bit Integer. Geben Sie diesen Integer zurück.
 */
 int32_t retrieve_from_pointer(int32_t *x) {
-    return 0;
+    return *x;
 }
 
 /*
@@ -25,7 +25,7 @@ Aufgabe 1b:
 `x` zeigt auf einen 32-bit Integer. Setzen Sie diesen Integer auf 42.
 */
 void set_through_pointer1(int32_t *x) {
-    return;
+    *x = 42;
 }
 
 /*
@@ -34,7 +34,7 @@ Aufgabe 1c:
 Wert von `y`.
 */
 void set_through_pointer2(int32_t *x, int32_t y) {
-    return;
+    *x = y;
 }
 
 /*
@@ -43,7 +43,7 @@ Aufgabe 1d:
 Lassen Sie den Wert auf den `y` zeigt dabei unverändert.
 */
 void set_through_pointer3(int32_t *x, int32_t *y) {
-    return;
+    *x = *y;
 }
 
 /*
@@ -51,7 +51,9 @@ Aufgabe 1e:
 `x` und `y` zeigen beide auf 32-bit Integer. Vertauschen Sie den Wert auf den `x` zeigt und den Wert auf den `y` zeigt.
 */
 void swap(int32_t *x, int32_t *y) {
-    return;
+    int32_t tmp = *x;
+    *x = *y;
+    *y = tmp;
 }
 
 /*
@@ -60,7 +62,7 @@ Aufgabe 1f:
 Wert zeigen (d.h. die Folgen von Einsen und Nullen an den beiden Speicherpositionen sind identisch).
 */
 bool point_to_equal_values(int32_t *x, int32_t *y) {
-    return false;
+    return *x == *y;
 }
 
 /*
@@ -69,7 +71,7 @@ Aufgabe 1g:
 Wert zeigen (d.h. die Speicherpositionen sind identisch).
 */
 bool point_to_same_values(int32_t *x, int32_t *y) {
-    return false;
+    return x == y;
 }
 
 /*
@@ -86,8 +88,7 @@ Aufgabe 2a:
 `x` zeigt auf eine Farbe. Geben Sie diese Farbe zurück.
 */
 RGB retrieve_from_pointer_struct(RGB *x) {
-    RGB color = {.r = 0, .g = 0, .b = 0};
-    return color;
+    return *x;
 }
 
 /*
@@ -95,7 +96,9 @@ Aufgabe 2b:
 `x` zeigt auf eine Farbe. Setzen Sie diese Farbe auf `Flieder` (rot 0.86, grün 0.82, blau 1.0).
 */
 void set_through_pointer_struct1(RGB *x) {
-    return;
+    x->r = 0.86f;
+    x->g = 0.82f;
+    x->b = 1.0f;
 }
 
 /*
@@ -103,7 +106,7 @@ Aufgabe 2c:
 `x` zeigt auf eine Farbe. `y` _ist_ eine Farbe. Setzen Sie den Wert auf den `x` zeigt auf den Wert von `y`.
 */
 void set_through_pointer_struct2(RGB *x, RGB y) {
-    return;
+    *x = y;
 }
 
 /*
@@ -112,7 +115,7 @@ Aufgabe 2d:
 Lassen Sie den Wert auf den `y` zeigt dabei unverändert.
 */
 void set_through_pointer_struct3(RGB *x, RGB *y) {
-    return;
+    *x = *y;
 }
 
 /*
@@ -120,7 +123,9 @@ Aufgabe 2e:
 `x` und `y` zeigen beide auf Farben. Vertauschen Sie den Wert auf den `x` zeigt und den Wert auf den `y` zeigt.
 */
 void swap_struct(RGB *x, RGB *y) {
-    return;
+    RGB tmp = *x;
+    *x = *y;
+    *y = tmp;
 }
 
 /*
@@ -129,7 +134,7 @@ Aufgabe 2f:
 Wert zeigen (d.h. die Folgen von Einsen und Nullen an den beiden Speicherpositionen sind identisch).
 */
 bool point_to_equal_values_struct(RGB *x, RGB *y) {
-    return false;
+    return (x->r == y->r) && (x->g == y->g) && (x->b == y->b);
 }
 
 /*
@@ -138,7 +143,7 @@ Aufgabe 2g:
 Wert zeigen (d.h. die Speicherpositionen sind identisch).
 */
 bool point_to_same_values_struct(RGB *x, RGB *y) {
-    return false;
+    return x == y;
 }
 
 /*
@@ -146,7 +151,7 @@ Aufgabe 3a:
 `x` zeigt auf eine Farbe. Geben Sie ihre Blaukomponente zurück.
 */
 float retrieve_from_pointer_field(RGB *x) {
-    return 0;
+    return x->b;
 }
 
 /*
@@ -154,7 +159,7 @@ Aufgabe 3b:
 `x` zeigt auf eine Farbe. Setzen Sie ihre Blaukomponente auf 0.
 */
 void set_through_pointer_field1(RGB *x) {
-    return;
+    x->b = 0.0f;
 }
 
 /*
@@ -163,7 +168,7 @@ Aufgabe 3c:
 den Wert der Blaukomponente von `y`.
 */
 void set_through_pointer_field2(RGB *x, RGB y) {
-    return;
+    x->b = y.b;
 }
 
 /*
@@ -173,7 +178,7 @@ Blaukomponente der Farbe auf die `y` zeigt.
 Lassen Sie den Wert auf den `y` zeigt dabei unverändert.
 */
 void set_through_pointer_field3(RGB *x, RGB *y) {
-    return;
+    x->b = y->b;
 }
 
 /*
@@ -182,7 +187,9 @@ Aufgabe 3e:
 und den Wert der Blaukomponente der Farbe, auf die `y` zeigt.
 */
 void swap_field(RGB *x, RGB *y) {
-    return;
+    float tmp = x->b;
+    x->b = y->b;
+    y->b = tmp;
 }
 
 /*
@@ -191,7 +198,7 @@ Aufgabe 3f:
 Blaukomponente zeigen (d.h. die Folgen von Einsen und Nullen an den beiden Speicherpositionen sind identisch).
 */
 bool point_to_equal_values_field(RGB *x, RGB *y) {
-    return false;
+    return x->b == y->b;
 }
 
 /*
@@ -200,7 +207,7 @@ Aufgabe 3g:
 Blaukomponente zeigen (d.h. die Speicherpositionen sind identisch).
 */
 bool point_to_same_values_field(RGB *x, RGB *y) {
-    return false;
+    return &(x->b) == &(y->b);
 }
 
 
@@ -215,7 +222,18 @@ Hinweis: flabble soll als _zweites_ Argument das Ergebnis von fizzledipp erhalte
 Argument die 27. `x` und der fizzledipp von `x` sind unterschiedliche Zahlen!
 */
 int32_t frumpleflabblefizzledipp(int32_t x) {
-    return 0;
+    int32_t original = x;
+    int32_t fizzled = x;
+    fizzledipp(&fizzled);
+
+    int32_t flabble_input = original;
+    int32_t flabble_result = flabble(&flabble_input, &fizzled);
+
+    int32_t second = 27;
+    int32_t frumple_result = 0;
+    frumple(flabble_result, &second, &frumple_result);
+
+    return frumple_result;
 }
 
 
@@ -239,7 +257,7 @@ Aufgabe 5a:
 Geben sie zurück, ob die _erste_ Schicht des gegebenen Pfannkuchenhaufens eine Fruchtschicht ist.
 */
 bool starts_with_fruit(PileOfPancakes p) {
-    return false;
+    return p.layer == Fruit;
 }
 
 /*
@@ -247,7 +265,11 @@ Aufgabe 5b:
 Geben sie zurück, ob die _letzte_ Schicht des gegebenen Pfannkuchenhaufens eine Fruchtschicht ist.
 */
 bool ends_with_fruit(PileOfPancakes p) {
-    return false;
+    PileOfPancakes *current = &p;
+    while (current->further_layers != NULL) {
+        current = current->further_layers;
+    }
+    return current->layer == Fruit;
 }
 
 /*
@@ -255,5 +277,13 @@ Aufgabe 5c:
 Geben Sie zurück, _wie viele_ Fruchtschichten der gegebene Pfannkuchenhaufen enthält.
 */
 int32_t count_fruit_layers(PileOfPancakes p) {
-    return 0;
+    int32_t count = 0;
+    PileOfPancakes *current = &p;
+    while (current != NULL) {
+        if (current->layer == Fruit) {
+            count++;
+        }
+        current = current->further_layers;
+    }
+    return count;
 }
